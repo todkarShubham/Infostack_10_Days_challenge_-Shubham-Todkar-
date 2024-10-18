@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+    // Function to sum digits iteratively
+    function sumOfDigitsIterative(n) {
+        let sum = 0;
+        let numStr = n.toString(); // Convert number to string
+        for (let i = 0; i < numStr.length; i++) {
+            sum += parseInt(numStr[i]); // Convert each character back to number and add to sum
+        }
+        return sum;
+    }
+    
+    // Function to sum digits recursively
+    function sumOfDigitsRecursive(n) {
+        let numStr = n.toString();
+        if (numStr.length === 0) {
+            return 0;
+        }
+        return parseInt(numStr[0]) + sumOfDigitsRecursive(parseInt(numStr.slice(1)));
+    }
+    
+    // Taking input from the user
+    let number = parseInt(prompt("Enter a positive integer (1 <= n <= 1,000,000):"));
+    
+    // Checking if the number is valid
+    if (number < 1 || number > 1000000 || isNaN(number)) {
+        prompt("Please enter a valid number between 1 and 1,000,000.");
+    } else {
+        // Iterative sum of digits
+        let iterativeResult = sumOfDigitsIterative(number);
+    
+        // Recursive sum of digits
+        let recursiveResult = sumOfDigitsRecursive(number);
+    
+        // Displaying both results using prompt
+        prompt("Iterative sum of digits: " + iterativeResult + "\nRecursive sum of digits: " + recursiveResult);
+    }
+    </script>
+
+</html>
